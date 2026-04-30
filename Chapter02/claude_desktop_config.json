@@ -1,0 +1,23 @@
+{ 
+
+  "mcpServers": { 
+
+    "postgres": { 
+
+      "command": "npx", 
+
+      "args": [ 
+
+        "-y", 
+
+        "@modelcontextprotocol/server-postgres", 
+
+        "postgresql://claude_user:a_strong_password@localhost:5432/your_database_name?sslmode=disable" 
+
+      ] 
+
+    } 
+
+  } 
+
+} 
