@@ -1,4 +1,7 @@
-SELECT  
+WITH daily_revenue AS ( 
+
+-- Aggregate revenue by day and region for completed orders 
+    SELECT  
         order_date, 
         region, 
         SUM(total_amount) AS daily_revenue 
