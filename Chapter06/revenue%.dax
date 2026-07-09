@@ -1,0 +1,9 @@
+Revenue % of Total = 
+DIVIDE( 
+  [Total Revenue], 
+   CALCULATE( 
+       [Total Revenue], 
+       ALL(Sales) 
+   ), 
+   0 
+) 
