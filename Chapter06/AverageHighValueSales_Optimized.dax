@@ -1,0 +1,15 @@
+AverageHighValueSales_Optimized =  
+// 1. Pre-calculate values or store thresholds to avoid row-by-row re-evaluation 
+VAR HighValueThreshold = 1000 
+VAR TargetRegion = "North America" 
+ 
+// 2. Compute the result using efficient column-level filters 
+VAR Result =  
+   CALCULATE( 
+       AVERAGE(Sales[Amount]), 
+       Sales[Amount] > HighValueThreshold, 
+       Sales[Region] = TargetRegion 
+   ) 
+ 
+RETURN 
+   Result 
