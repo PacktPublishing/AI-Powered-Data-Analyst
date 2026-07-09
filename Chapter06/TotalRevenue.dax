@@ -1,0 +1,19 @@
+Total Revenue = 
+SUMX( 
+   Sales, 
+   Sales[Quantity] * Sales[UnitPrice] + 
+  (Sales[Quantity] * Sales[UnitPrice] * Sales[Discount]) 
+) 
+
+```" 
+
+
+Total Revenue Optimized = 
+VAR RevenuePerRow = 
+   ADDCOLUMNS( 
+       Sales, 
+       "Revenue", 
+       Sales[Quantity] * Sales[UnitPrice] * (1 - Sales[Discount]) 
+   ) 
+RETURN 
+   SUMX(RevenuePerRow, [Revenue]) 
