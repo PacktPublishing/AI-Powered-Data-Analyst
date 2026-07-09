@@ -1,0 +1,12 @@
+-- USERELATIONSHIP activates an inactive relationship for the 
+-- duration of this specific CALCULATE call only. 
+-- The active relationship remains active for all other measures. 
+Revenue vs Target = 
+VAR ActualRevenue = [Total Revenue] 
+VAR TargetRevenue = 
+   CALCULATE( 
+       SUM(Targets[target_revenue]), 
+       USERELATIONSHIP(Products[product_id], Targets[product_id]) 
+   ) 
+RETURN 
+   DIVIDE(ActualRevenue - TargetRevenue, TargetRevenue) 
