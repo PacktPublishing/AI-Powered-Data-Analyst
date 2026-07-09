@@ -1,0 +1,27 @@
+-- Revenue YTD 
+-- Requires: Calendar table marked as date table, active relationship 
+-- to Sales[order_date]. Accumulates from Jan 1 of the year in the 
+-- current filter context through the last visible date. 
+Revenue YTD = 
+
+CALCULATE( 
+  [Total Revenue], 
+   DATESYTD('Calendar'[Date]) 
+) 
+ 
+-- Revenue QTD 
+-- Same prerequisites. Accumulates from the first day of the current 
+-- quarter through the last visible date. 
+Revenue QTD = 
+CALCULATE( 
+  [Total Revenue], 
+   DATESQTD('Calendar'[Date]) 
+) 
+ 
+-- Revenue MTD 
+-- Accumulates from the first day of the current month. 
+Revenue MTD = 
+CALCULATE( 
+  [Total Revenue], 
+   DATESMTD('Calendar'[Date]) 
+) 
