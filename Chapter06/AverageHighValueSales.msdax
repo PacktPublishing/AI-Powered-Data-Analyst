@@ -1,0 +1,8 @@
+AverageHighValueSales =  
+CALCULATE( 
+   AVERAGE(Sales[Amount]), 
+   FILTER( 
+       Sales, 
+       Sales[Amount] > 1000 && Sales[Region] = "North America" 
+   ) 
+) 
