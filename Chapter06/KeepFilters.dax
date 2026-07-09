@@ -1,0 +1,18 @@
+-- Without KEEPFILTERS: the filter argument REPLACES any existing 
+-- filter on Sales[region]. If the user has filtered to EMEA, 
+-- this measure returns AMER revenue regardless. 
+Revenue AMER Override = 
+CALCULATE( 
+  [Total Revenue], 
+   Sales[region] = "AMER" 
+) 
+ 
+-- With KEEPFILTERS: the filter argument INTERSECTS with the 
+-- existing filter. If the user has filtered to EMEA, this 
+-- measure returns BLANK because EMEA and AMER do not intersect. 
+-- If no region filter is active, it returns AMER revenue as expected. 
+Revenue AMER Intersect = 
+CALCULATE( 
+  [Total Revenue], 
+   KEEPFILTERS(Sales[region] = "AMER") 
+) 
