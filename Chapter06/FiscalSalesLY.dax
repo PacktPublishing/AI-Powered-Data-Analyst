@@ -1,0 +1,9 @@
+// Overriding Filter Context Using Fiscal Year Offset 
+Fiscal Sales LY =  
+VAR CurrentOffset = SELECTEDVALUE(Dim_Date[Fiscal_Year_Offset]) 
+RETURN 
+   CALCULATE( 
+       [Total Sales], 
+       ALL(Dim_Date), 
+       Dim_Date[Fiscal_Year_Offset] = CurrentOffset - 1 
+   ) 
