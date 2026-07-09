@@ -1,0 +1,18 @@
+-- Revenue: Completed Orders Only 
+-- CALCULATE replaces the current filter context with a new one 
+-- that includes all existing filters PLUS status = "completed". 
+-- If the report user has already filtered to "completed", no change. 
+-- If they have filtered to "refunded", this measure overrides that. 
+Revenue Completed = 
+CALCULATE( 
+  [Total Revenue], 
+   Sales[status] = "completed" 
+) 
+
+
+-- Alternative using FILTER - functionally identical for simple conditions 
+-- but carries a performance cost for large tables 
+Revenue Completed FILTER Version = 
+CALCULATE( 
+  [Total Revenue], 
+   FILTER(Sales, Sales[status] = "completed")
