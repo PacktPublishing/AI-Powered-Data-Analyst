@@ -1,0 +1,9 @@
+YoY Growth Optimized = 
+VAR CurrentYearSales = [Total Sales] 
+VAR PriorYearSales = 
+   CALCULATE( 
+       [Total Sales], 
+       SAMEPERIODLASTYEAR('Date'[Date]) 
+   ) 
+RETURN 
+   DIVIDE(CurrentYearSales - PriorYearSales, PriorYearSales) 
