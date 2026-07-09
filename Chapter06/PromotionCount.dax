@@ -1,0 +1,13 @@
+-- Correct: explicitly traverse the bridge table 
+-- Step 1: get the promotion IDs associated with sales in the current context 
+-- Step 2: count distinct promotion IDs from that explicit set 
+Promotion Count Correct = 
+VAR SalesInContext = 
+   VALUES(Sales[order_id]) 
+VAR PromotionIDs = 
+   CALCULATETABLE( 
+       VALUES(Sales_Promotions[promotion_id]), 
+       TREATAS(SalesInContext, Sales_Promotions[order_id]) 
+   ) 
+RETURN 
+   COUNTROWS(PromotionIDs) 
