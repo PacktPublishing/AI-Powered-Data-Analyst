@@ -1,0 +1,23 @@
+// Measure 1: Base Aggregation 
+Total Sales =  
+SUM(Sales_Fact[Line_Total]) 
+ 
+// Measure 2: Overriding Filter Context for Previous Year 
+Sales LY =  
+CALCULATE( 
+   [Total Sales], 
+   SAMEPERIODLASTYEAR(Dim_Date[Date_Key]) 
+) 
+ 
+// Measure 3: Defensive Percentage Growth Calculation 
+Sales YoY Growth Pct =  
+VAR CurrentSales = [Total Sales] 
+VAR LastYearSales = [Sales LY] 
+VAR NetVariance = CurrentSales - LastYearSales 
+RETURN 
+   // DIVIDE function natively handles zero denominators without throwing evaluation errors 
+   DIVIDE( 
+       NetVariance, 
+       LastYearSales, 
+       0 // Alternate result if LastYearSales is blank or zero 
+   ) 
