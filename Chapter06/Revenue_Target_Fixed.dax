@@ -1,0 +1,11 @@
+Revenue_Target_Fixed =  
+// The initial query failed because older DAX engines or specific evaluation rules 
+// restrict multiple-column logical evaluations directly inside CALCULATE. 
+// Using the explicit FILTER function resolves this context constraint. 
+CALCULATE( 
+   SUM(Sales_Fact[Gross_Amount]), 
+   FILTER( 
+       ALL(Sales_Fact[Category], Sales_Fact[Year]), 
+       Sales_Fact[Category] = "SaaS" && Sales_Fact[Year] = 2026 
+   ) 
+) 
