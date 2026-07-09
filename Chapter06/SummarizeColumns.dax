@@ -1,0 +1,8 @@
+EVALUATE 
+SUMMARIZECOLUMNS( 
+   'Date'[Year], 
+   'Product'[Category], 
+   "Sales", [Total Sales], 
+   "Growth", [YoY Growth %] 
+) 
+ORDER BY 'Date'[Year], 'Product'[Category]
