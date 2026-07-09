@@ -1,0 +1,18 @@
+-- CRASHES / SYNTAX ERROR: 
+-- Boolean filters cannot evaluate measures. 
+HighValueCustomerSales =  
+CALCULATE( 
+  [Total Sales], 
+   [Total Sales] > 5000  -- This causes an error 
+) 
+ 
+-- WORKS PERFECTLY: 
+-- Tells DAX exactly how to evaluate the measure. 
+HighValueCustomerSales =  
+CALCULATE( 
+  [Total Sales], 
+   FILTER( 
+       VALUES(Customer[CustomerKey]),  
+       [Total Sales] > 5000 
+   ) 
+) 
