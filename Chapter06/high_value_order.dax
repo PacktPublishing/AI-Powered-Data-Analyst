@@ -1,0 +1,18 @@
+-- Calculated column: row-level property, evaluate once at refresh 
+High Value Order = 
+IF ( 
+   Sales[revenue] > 500, 
+   "High Value", 
+   "Standard" 
+) 
+ 
+-- Measure: must respond to filter context 
+Revenue % of Total = 
+DIVIDE ( 
+  [Total Revenue], 
+   CALCULATE ( 
+       [Total Revenue], 
+       ALL ( Sales ) 
+   ), 
+   0 
+) 
