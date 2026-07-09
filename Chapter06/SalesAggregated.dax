@@ -1,0 +1,9 @@
+Sales Aggregated = 
+	SUMMARIZECOLUMNS( 
+   		'Date'[Year], 
+   		'Date'[Month], 
+   		'Product'[Category], 
+   		'Customer'[Region], 
+   		"Total Sales", [Total Sales], 
+   		"Order Count", [Order Count], 
+   		"Customer Count", DISTINCTCOUNT(Sales[CustomerKey]
