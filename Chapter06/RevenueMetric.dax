@@ -1,0 +1,9 @@
+-- Auto-generated field parameter DAX (Power BI creates this) 
+-- You can edit the display names and order manually 
+Revenue Metric = 
+{ 
+  ("Total Revenue",           NAMEOF('Sales'[Total Revenue]),         0), 
+   ("Revenue YTD",             NAMEOF('Sales'[Revenue YTD]),           1), 
+   ("Same Period Last Year",   NAMEOF('Sales'[Revenue SPLY]),          2), 
+   ("7-Day Rolling Avg",       NAMEOF('Sales'[Revenue 7D Rolling Avg]),3) 
+} 
