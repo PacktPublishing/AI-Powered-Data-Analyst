@@ -18,3 +18,15 @@ report_config = {
        "detail_level": "high" 
    } 
 } 
+
+audience = "regional_manager" 
+config = report_config[audience] 
+ 
+if config["by_region"]: 
+   selected_metrics = weekly_metrics[ 
+       weekly_metrics["Metric"].isin(config["metrics"]) 
+   ].groupby(["Region", "Metric"], as_index=False)["Value"].sum() 
+else: 
+   selected_metrics = weekly_metrics[ 
+       weekly_metrics["Metric"].isin(config["metrics"]) 
+   ] 
